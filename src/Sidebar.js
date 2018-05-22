@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './Sidebar.css'
 import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
@@ -8,45 +9,45 @@ const Sidebar = () => {
     return (
         <nav 
             className="Sidebar"
-            style ={styles.sidebar} 
+            
          >
 
           <div 
             className="logo"
-            style={styles.logo}
+           
           >
             <img 
                 src={quill} 
                 alt="Noteherder"
-                style={styles.logoImg}
+               
             />
           </div>
           <a 
             className="new-note" 
             href="/notes"
-            style={styles.newNote}
+           
           >
             <img 
                 src={newHover} 
                 alt="New note"
-                style={styles.plusIcon}/>
+                />
             <img 
                 className="outline" 
                 src={newIcon} 
                 alt="New note"
-                style={styles.plusIcon}
+                
                 />
           </a>
           <div 
             className="SignOut"
-            style={styles.signOut}
+           
           >
             <button 
-                style={styles.button}
+                
              >
               <i 
                 class="fa fa-sign-out"
-                style={styles.buttonIcon}
+                
               >
              </i>
             </button>
@@ -55,7 +56,7 @@ const Sidebar = () => {
     )
 
 }
-
+/*
 const styles = {
     sidebar: {
         width: '6rem',
@@ -105,5 +106,5 @@ const styles = {
 
 
 } 
-
+*/
 export default Sidebar

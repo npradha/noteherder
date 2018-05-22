@@ -1,0 +1,50 @@
+
+.Sidebar {
+    width: 60px;
+    background-color: #f3f3f3;
+    padding: 0.5rem 0; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+  }
+  .Sidebar .logo {
+    font-family: "Fauna One";
+    color: #666;
+    font-size: 3rem;
+  }
+  .Sidebar .logo img {
+    width: 30px;
+    padding-left: 4px;
+  }
+  
+  .Sidebar a.new-note {
+    margin-top: 2rem;
+    position: relative;
+    width: 40px;
+  }
+  .Sidebar button {
+    background-color: transparent;
+    border: 0;
+    color: #008BF8;
+    cursor: pointer;
+  }
+  .Sidebar a img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.25s ease-in-out;
+  }
+  .Sidebar a:hover img.outline {
+    opacity: 0;
+  }
+  
+  .Sidebar .SignOut {
+    position: absolute;
+    bottom: 1rem;
+  }
+  .Sidebar .SignOut button {
+    outline: none;
+  }
+  .Sidebar .SignOut button i.fa {
+    font-size: 2rem;
+  }
