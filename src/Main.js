@@ -9,18 +9,7 @@ class Main extends Component {
     super()
     this.state = {
       currentNote: this.blankNote(),
-      notes: [
-        {
-          id: 1,
-          title: 'JS thoughts',
-          body: 'I just love JS so much.',
-        },
-        {
-          id: 2,
-          title: 'Breakfast',
-          body: 'FOR IT!',
-        },
-      ],
+      notes: [],
     }
   }
 
