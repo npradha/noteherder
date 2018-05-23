@@ -1,7 +1,10 @@
 import React from 'react'
 
 import './NoteForm.css'
-const NoteForm = (props) => {
+const NoteForm = ({ currentNote }) => {
+  const handleChanges = (ev) => {
+    currentNote[ev.target.name] = ev.target.value
+  }
   return (
     <div className="NoteForm">
       <div className="form-actions">
@@ -15,13 +18,14 @@ const NoteForm = (props) => {
             type="text"
             name="title"
             placeholder="Title your note"
-            value={props.currentNote.title}
+            value={currentNote.title}
+            onChange={handleChanges}
           />
         </p>
             
         <textarea 
           name="body" 
-          value={props.currentNote.body}
+          value={currentNote.body}
         >
         </textarea>
       </form>
