@@ -3,7 +3,7 @@ import React from 'react'
 import './NoteList.css'
 import Note from './Note'
 
-const NoteList = ({ notes, setCurrentNote }) => {
+const NoteList = ({ notes, setCurrentNote, deleteNote }) => {
     return (
       <div className="NoteList">
         <h3>Notes</h3>
@@ -12,7 +12,8 @@ const NoteList = ({ notes, setCurrentNote }) => {
             <Note 
               key={note.id}
               note={note} 
-              setCurrentNote={setCurrentNote}/>)
+              setCurrentNote={setCurrentNote}
+              deleteNote={deleteNote}/>)
             )}
         </ul>
       </div>

@@ -39,9 +39,16 @@ class Main extends Component {
         note.id = Date.now()
         notes.push(note)
     }
-
     this.setState({ notes, currentNote: note })
   }
+
+  deleteNote = (note) => {
+      const notes = [...this.state.notes]
+      const i = notes.findIndex(currentNote => currentNote.id === note.id)
+      notes.splice(i,1)
+      this.setState({ notes })
+      this.setCurrentNote(this.blankNote())
+}
 
   render() {
     return (
@@ -53,10 +60,12 @@ class Main extends Component {
         <NoteList
           notes={this.state.notes}
           setCurrentNote={this.setCurrentNote}
+          
         />
         <NoteForm
           currentNote={this.state.currentNote}
           saveNote={this.saveNote}
+          deleteNote={this.deleteNote}
         />
       </div>
     )
