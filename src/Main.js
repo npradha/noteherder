@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
+import firebase from './firebase'
 
 class Main extends Component {
   constructor() {
@@ -50,16 +51,25 @@ class Main extends Component {
       notes.splice(i,1)
       this.setState({ notes })
       this.setCurrentNote(this.blankNote())
-}
+    }
+    
     componentWillMount(){
         localStorage.getItem('notes') && this.setState({
             notes: JSON.parse(localStorage.getItem('notes'))
         })
+    } 
+
+
+    componentDidMount(){
+        if(!localStorage.getItem('notes')){
+            this.fetchData()
     }
+}
+
 
     componentWillUpdate(nextProps, nextState){
         localStorage.setItem('notes', JSON.stringify(nextState.notes))
-    } 
+    }
 
 
   render() {

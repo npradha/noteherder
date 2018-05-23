@@ -26,6 +26,7 @@ const NoteForm = ({ currentNote, saveNote, deleteNote }) => {
             type="text"
             name="title"
             placeholder="Title your note"
+            autoFocus
             value={currentNote.title}
             onChange={handleChanges}
           />
