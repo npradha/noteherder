@@ -1,15 +1,19 @@
 {
   "name": "noteherder",
   "version": "0.1.0",
+  "homepage": "https://npradha.github.io/noteherder",
   "private": true,
   "dependencies": {
     "aphrodite": "^2.2.1",
+    "gh-pages": "^1.1.0",
     "re-base": "^3.2.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

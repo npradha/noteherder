@@ -44,7 +44,7 @@ class Main extends Component {
     this.setState({ notes, currentNote: note })
    
   }
-
+    
   deleteNote = (note) => {
       const notes = [...this.state.notes]
       const i = notes.findIndex(currentNote => currentNote.id === note.id)
