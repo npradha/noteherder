@@ -59,11 +59,6 @@ class Main extends Component {
         })
     } 
 
-
-    componentDidMount(){
-        if(!localStorage.getItem('notes')){
-            this.fetchData()
-    }
 }
 
 

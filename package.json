@@ -1,7 +1,7 @@
 {
   "name": "noteherder",
   "version": "0.1.0",
-  "homepage": "https://npradha.github.io/noteherder",
+  "homepage": "http://npradha.github.io/noteherder/",
   "private": true,
   "dependencies": {
     "aphrodite": "^2.2.1",
