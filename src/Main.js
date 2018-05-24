@@ -52,14 +52,21 @@ class Main extends Component {
       this.setState({ notes })
       this.setCurrentNote(this.blankNote())
     }
-    
+   * 
     componentWillMount(){
         localStorage.getItem('notes') && this.setState({
             notes: JSON.parse(localStorage.getItem('notes'))
         })
     } 
 
+fetchData(){
+
 }
+    componentDidMount(){
+        if(!localStorage.getItem('notes')){
+            this.fetchData()
+    }
+    }
 
 
     componentWillUpdate(nextProps, nextState){
