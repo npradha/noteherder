@@ -52,26 +52,20 @@ class Main extends Component {
       this.setState({ notes })
       this.setCurrentNote(this.blankNote())
     }
-   * 
+    
     componentWillMount(){
         localStorage.getItem('notes') && this.setState({
             notes: JSON.parse(localStorage.getItem('notes'))
         })
     } 
 
-    // fetchData(){
-
+    // componentWillUpdate(nextProps, nextState){
+    //     localStorage.setItem('notes', JSON.stringify(nextState.notes))
     // }
-    // componentDidMount(){
-    //     if(!localStorage.getItem('notes')){
-    //         this.fetchData()
-    // }
-    // }
-
-
-    componentWillUpdate(nextProps, nextState){
-        localStorage.setItem('notes', JSON.stringify(nextState.notes))
-    }
+    componentDidUpdate() {
+        const notesString = JSON.stringify(this.state.notes)
+        localStorage.setItem('notes', notesString)
+      }
 
 
   render() {
