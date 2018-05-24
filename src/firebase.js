@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
 import Rebase from 're-base'
 
     const config = {
@@ -11,5 +12,8 @@ import Rebase from 're-base'
       messagingSenderId: "62531616682"
     }
     const app = firebase.initializeApp(config)
+
+    export const gitHubProvider = new firebase.auth.GithubAuthProvider()
+    export const auth = firebase.auth()
 
     export default Rebase.createClass(app.database())

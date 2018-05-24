@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './App.css'
+import {auth} from './firebase'
 import Main from './Main'
 import SignIn from './SignIn'
 
@@ -9,12 +10,25 @@ class App extends Component {
     uid: null,
   }
 
+  componentWillMount(){
+    auth.onAuthStateChanged(
+    (user) => {
+      if(user){
+        this.handleAuth()
+      }else{
+        this.signOut()
+      }
+    }
+  )
+  }
+
   handleAuth = () => {
     this.setState({uid: 'npradhan'})
   }
 
   signOut = () =>{
     this.setState({uid: null})
+    auth.signOut()
   }
 
   signedIn= () => {
@@ -27,7 +41,7 @@ class App extends Component {
         {
           this.signedIn()
             ? <Main signOut={this.signOut} />
-            : <SignIn handleAuth={this.handleAuth} />
+            : <SignIn/>
         }
 
       </div>
