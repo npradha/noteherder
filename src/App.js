@@ -25,9 +25,11 @@ class App extends Component {
   handleAuth = () => {
     this.setState({uid: 'npradhan'})
   }
+  handleUnauth = () => {
+    this.setState({ uid: null })
+  }
 
   signOut = () =>{
-    this.setState({uid: null})
     auth.signOut()
   }
 

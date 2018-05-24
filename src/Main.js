@@ -4,7 +4,6 @@ import firebase from './firebase'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
-import SignIn from './SignIn'
 
 class Main extends Component {
   constructor() {
