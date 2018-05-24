@@ -59,14 +59,14 @@ class Main extends Component {
         })
     } 
 
-fetchData(){
+    // fetchData(){
 
-}
-    componentDidMount(){
-        if(!localStorage.getItem('notes')){
-            this.fetchData()
-    }
-    }
+    // }
+    // componentDidMount(){
+    //     if(!localStorage.getItem('notes')){
+    //         this.fetchData()
+    // }
+    // }
 
 
     componentWillUpdate(nextProps, nextState){
