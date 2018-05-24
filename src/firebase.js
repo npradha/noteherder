@@ -1,4 +1,7 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import Rebase from 're-base'
+
     const config = {
       apiKey: "AIzaSyDcgK2CHn84zibSoZ__82HyMoxogZn3OjM",
       authDomain: "noteherder-fa0ae.firebaseapp.com",
@@ -7,6 +10,6 @@ import firebase from 'firebase'
       storageBucket: "",
       messagingSenderId: "62531616682"
     }
-    firebase.initializeApp(config)
-    export default firebase
-  
+    const app = firebase.initializeApp(config)
+
+    export default Rebase.createClass(app.database())

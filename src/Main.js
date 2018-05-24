@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
+import firebase from './firebase'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
-import firebase from './firebase'
+import SignIn from './SignIn'
 
 class Main extends Component {
   constructor() {
@@ -54,18 +55,13 @@ class Main extends Component {
     }
     
     componentWillMount(){
-        localStorage.getItem('notes') && this.setState({
-            notes: JSON.parse(localStorage.getItem('notes'))
+        firebase.syncState('notes', {
+            context: this,
+            state: 'notes',
+            asArray: true,
+
         })
     } 
-
-    // componentWillUpdate(nextProps, nextState){
-    //     localStorage.setItem('notes', JSON.stringify(nextState.notes))
-    // }
-    componentDidUpdate() {
-        const notesString = JSON.stringify(this.state.notes)
-        localStorage.setItem('notes', notesString)
-      }
 
 
   render() {
@@ -74,7 +70,10 @@ class Main extends Component {
         className="Main"
         style={style}
       >
-        <Sidebar resetCurrentNote={this.resetCurrentNote} />
+        <Sidebar 
+            resetCurrentNote={this.resetCurrentNote} 
+            signOut={this.props.signOut}
+        />
         <NoteList
           notes={this.state.notes}
           setCurrentNote={this.setCurrentNote}
