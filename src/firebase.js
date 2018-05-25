@@ -14,6 +14,7 @@ import Rebase from 're-base'
     const app = firebase.initializeApp(config)
 
     export const gitHubProvider = new firebase.auth.GithubAuthProvider()
+    export const googleProvider = new firebase.auth.GoogleAuthProvider()
     export const auth = firebase.auth()
 
     export default Rebase.createClass(app.database())

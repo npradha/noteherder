@@ -6,9 +6,15 @@ import Main from './Main'
 import SignIn from './SignIn'
 
 class App extends Component {
-  state = {
-    uid: null,
+  constructor(){
+    super()
+    this.state = {
+      uid: null,
+    }
   }
+  // state = {
+  //   uid: null,
+  // }
 
   componentWillMount(){
     auth.onAuthStateChanged(
@@ -16,7 +22,7 @@ class App extends Component {
       if(user){
         this.handleAuth()
       }else{
-        this.signOut()
+        this.handleUnauth()
       }
     }
   )
@@ -42,7 +48,10 @@ class App extends Component {
       <div className="App">
         {
           this.signedIn()
-            ? <Main signOut={this.signOut} />
+            ? <Main 
+              signOut={this.signOut} 
+              uid={this.state.uid}
+             />
             : <SignIn/>
         }
 

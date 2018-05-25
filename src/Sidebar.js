@@ -42,7 +42,7 @@ const Sidebar = ( { resetCurrentNote, signOut }) => {
       >
         <button 
           className={css(styles.button)}
-          onClick={signOut} >
+          onClick= {signOut} >
           <i
             className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}
             title="sign out"

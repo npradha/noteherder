@@ -5,6 +5,7 @@ import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
 
+
 class Main extends Component {
   constructor() {
     super()
@@ -54,7 +55,7 @@ class Main extends Component {
     }
     
     componentWillMount(){
-        firebase.syncState('notes', {
+        firebase.syncState(this.props.uid, {
             context: this,
             state: 'notes',
             asArray: true,
