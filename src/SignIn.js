@@ -7,7 +7,7 @@ import {auth, gitHubProvider, googleProvider} from './firebase'
 
 const SignIn = ({ handleAuth }) => {
     const authenticate = (provider) => {
-        auth.signInWithRedirect(provider)
+        auth.signInWithPopup(provider)
     }
   return (
     <div className="SignIn">
