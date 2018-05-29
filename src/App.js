@@ -20,7 +20,7 @@ class App extends Component {
     auth.onAuthStateChanged(
     (user) => {
       if(user){
-        this.handleAuth()
+        this.handleAuth(user)
       }else{
         this.handleUnauth()
       }
@@ -28,8 +28,8 @@ class App extends Component {
   )
   }
 
-  handleAuth = () => {
-    this.setState({uid: 'npradhan'})
+  handleAuth = (user) => {
+    this.setState({uid: user.uid})
   }
   handleUnauth = () => {
     this.setState({ uid: null })

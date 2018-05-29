@@ -55,7 +55,7 @@ class Main extends Component {
     }
     
     componentWillMount(){
-        firebase.syncState(this.props.uid, {
+        firebase.syncState(`notes/${this.props.uid}`, {
             context: this,
             state: 'notes',
             asArray: true,
