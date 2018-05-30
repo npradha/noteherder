@@ -80,7 +80,6 @@ class Main extends Component {
         style={style}
       >
         <Sidebar
-          resetCurrentNote={this.resetCurrentNote}
           signOut={this.props.signOut}
         />
         <NoteList notes={this.state.notes} />
