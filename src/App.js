@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css'
-import { auth } from './base'
+import { auth } from './firebase'
 import Main from './Main'
 import SignIn from './SignIn'
 
@@ -63,6 +63,12 @@ class App extends Component {
               this.signedIn()
                 ? <Main signOut={this.signOut} uid={this.state.uid} />
                 : <Redirect to="/sign-in" />
+            )}
+          />
+          <Route render={() => (
+            this.signedIn()
+            ? <Redirect to="/notes" />
+            : <Redirect to="/sign-in" />
             )}
           />
         </Switch>
