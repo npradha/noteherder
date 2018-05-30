@@ -59,7 +59,7 @@
 }
 .NoteList ul#notes li:hover,
 .NoteList ul#notes a.active li {
-  background-color: #e4e9eb;
+  background-color: rgb(179, 214, 255);
 }
 .NoteList ul#notes li:hover,
 .NoteList ul#notes li:hover .note *,

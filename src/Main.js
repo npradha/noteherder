@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import firebase from './firebase'
+import base from './firebase'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
-
 
 class Main extends Component {
   constructor() {
@@ -14,6 +13,14 @@ class Main extends Component {
       currentNote: this.blankNote(),
       notes: [],
     }
+  }
+
+  componentWillMount() {
+    base.syncState(`notes/${this.props.uid}`, {
+      context: this,
+      state: 'notes',
+      asArray: true,
+    })
   }
 
   blankNote = () => {
@@ -35,57 +42,48 @@ class Main extends Component {
   saveNote = (note) => {
     const notes = [...this.state.notes]
 
-    if(note.id){
-        const i = notes.findIndex(currentNote => currentNote.id === note.id)
-        notes[i] = note
-    }else{
-        note.id = Date.now()
-        notes.push(note)
+    if (note.id) {
+      // existing note
+      const i = notes.findIndex(currentNote => currentNote.id === note.id)
+      notes[i] = note
+    } else {
+      // new note
+      note.id = Date.now()
+      notes.push(note)
     }
 
     this.setState({ notes, currentNote: note })
-   
   }
-    
-  deleteNote = (note) => {
-      const notes = [...this.state.notes]
-      const i = notes.findIndex(currentNote => currentNote.id === note.id)
-      notes.splice(i,1)
+
+  removeCurrentNote = () => {
+    const notes = [...this.state.notes]
+    const i = notes.findIndex(note => note.id === this.state.currentNote.id)
+
+    if (i > -1) {
+      notes.splice(i, 1)
       this.setState({ notes })
-      this.setCurrentNote(this.blankNote())
     }
-    
-    componentWillMount(){
-        firebase.syncState(`notes/${this.props.uid}`, {
-            context: this,
-            state: 'notes',
-            asArray: true,
 
-        })
-    } 
-
+    this.resetCurrentNote()
+  }
 
   render() {
     const formProps = {
-      currentNote: this.state.currentNote,
       saveNote: this.saveNote,
-      deleteNote: this.deleteNote,
+      deleteNote: this.deletetNote,
+      notes: this.state.notes,
     }
+
     return (
       <div
         className="Main"
         style={style}
       >
-        <Sidebar 
-            resetCurrentNote={this.resetCurrentNote} 
-            signOut={this.props.signOut}
+        <Sidebar
+          resetCurrentNote={this.resetCurrentNote}
+          signOut={this.props.signOut}
         />
-        <NoteList
-          notes={this.state.notes}
-          setCurrentNote={this.setCurrentNote}
-          
-        />
-
+        <NoteList notes={this.state.notes} />
         <Switch>
           <Route
             path="/notes/:id"
@@ -105,7 +103,8 @@ class Main extends Component {
             )}
           />
         </Switch>
-      
+
+
       </div>
     )
   }
