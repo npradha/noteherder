@@ -87,19 +87,18 @@ class Main extends Component {
         />
 
         <Switch>
-          <Route 
+          <Route
             path="/notes/:id"
-            render = {navProps => (
-                <NoteForm
+            render={navProps => (
+              <NoteForm
                 {...formProps}
                 {...navProps}
               />
             )}
           />
-
-         <Route 
-            render = {navProps => (
-                <NoteForm
+          <Route
+            render={navProps => (
+              <NoteForm
                 {...formProps}
                 {...navProps}
               />
