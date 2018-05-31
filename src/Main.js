@@ -40,6 +40,7 @@ class Main extends Component {
   }
 
   saveNote = (note) => {
+    const timestamp = Date.now()
     let shouldRedirect = false
     const notes = [...this.state.notes]
 
@@ -53,7 +54,7 @@ class Main extends Component {
       notes.push(note)
       shouldRedirect=true
     }
-
+    note.updatedAt = timestamp
     this.setState(
       { notes },
       () => {
