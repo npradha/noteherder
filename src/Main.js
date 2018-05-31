@@ -43,7 +43,8 @@ class Main extends Component {
     const timestamp = Date.now()
     let shouldRedirect = false
     const notes = [...this.state.notes]
-
+    note.updatedAt = timestamp
+    
     if (note.id) {
       // existing note
       const i = notes.findIndex(currentNote => currentNote.id === note.id)
@@ -54,7 +55,12 @@ class Main extends Component {
       notes.push(note)
       shouldRedirect=true
     }
-    note.updatedAt = timestamp
+
+    notes.sort((a, b) => {
+      return b.updatedAt - a.updatedAt
+    })
+
+    
     this.setState(
       { notes },
       () => {
